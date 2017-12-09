@@ -1,4 +1,4 @@
-# Spring logging exceptions
+# Spring logging exceptions  
 There are many ways to log and handle exceptions in spring. I prefer the @ControllerAdvice [method](https://lankydanblog.com/2017/09/12/global-exception-handling-with-controlleradvice).
 
 ### Using @ControllerAdvice
@@ -6,7 +6,7 @@ There are many ways to log and handle exceptions in spring. I prefer the @Contro
 
 > NoHandlerFoundException requires in application.properties: 
 > - _spring.mvc.throw-exception-if-no-handler-found=true_  
-> - _spring.resources.add-mappings=false_  
+> - _spring.resources.add-mappings=false_   
 
 We can for example handle the exception based on it's type and log it to console.
 
