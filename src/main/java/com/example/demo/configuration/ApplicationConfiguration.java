@@ -1,23 +1,38 @@
 package com.example.demo.configuration;
 
+import com.example.demo.interceptor.RequestInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
-@Configuration
-class ApplicationConfiguration {
+// TODO @Configuration
+class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
     private static final Logger log = LoggerFactory.getLogger(ApplicationConfiguration.class);
 
-    @Bean
+    private final RequestInterceptor requestInterceptor;
+
+    public ApplicationConfiguration(RequestInterceptor requestInterceptor) {
+        this.requestInterceptor = requestInterceptor;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(requestInterceptor);
+    }
+
+    // TODO @Bean
     public ErrorAttributes errorAttributes() {
         return new DefaultErrorAttributes() {
 

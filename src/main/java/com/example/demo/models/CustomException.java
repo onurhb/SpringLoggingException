@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class CustomException {
+public class CustomException{
 
     private String timestamp;
     private HttpStatus status;
