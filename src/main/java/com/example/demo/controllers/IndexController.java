@@ -1,12 +1,8 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.CustomException;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingServletRequestParameterException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class IndexController {
@@ -27,4 +23,15 @@ public class IndexController {
     public String Custom() throws Exception {
         throw new MissingServletRequestParameterException("param", "string");
     }
+
+    @RequestMapping(path = "/test", method = RequestMethod.POST)
+    public ResponseEntity Test()  {
+        return ResponseEntity.badRequest().build();
+    }
+
+    @RequestMapping(path = "/normal", method = RequestMethod.GET)
+    public String normal()  {
+        return "Hello world";
+    }
+
 }

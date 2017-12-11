@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
-// TODO @Configuration
+@Configuration
 class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
     private static final Logger log = LoggerFactory.getLogger(ApplicationConfiguration.class);
@@ -32,7 +32,7 @@ class ApplicationConfiguration extends WebMvcConfigurerAdapter {
         registry.addInterceptor(requestInterceptor);
     }
 
-    // TODO @Bean
+    //n @Bean
     public ErrorAttributes errorAttributes() {
         return new DefaultErrorAttributes() {
 
