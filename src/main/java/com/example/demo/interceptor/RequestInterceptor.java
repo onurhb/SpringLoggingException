@@ -15,7 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.stream.Collectors;
 
-@Component
+// @Component
 public class RequestInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger log = LoggerFactory.getLogger(RequestInterceptor.class);
