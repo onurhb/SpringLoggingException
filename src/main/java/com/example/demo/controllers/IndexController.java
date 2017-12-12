@@ -40,7 +40,4 @@ public class IndexController {
     public String Test2()  {
         return "Yo";
     }
-
-
-
 }

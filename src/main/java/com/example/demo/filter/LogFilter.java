@@ -41,7 +41,8 @@ public class LogFilter extends OncePerRequestFilter {
                 int length = Math.min(buf.length, DEFAULT_MAX_PAYLOAD_LENGTH);
                 try {
                     body = new String(buf, 0, length, responseWrapper.getCharacterEncoding());
-                } catch (UnsupportedEncodingException e) {
+                    responseWrapper.copyBodyToResponse();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -62,6 +63,7 @@ public class LogFilter extends OncePerRequestFilter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        logger.info("Incoming request to URL: {} payload: {}", request.getRequestURI() ,body);
+        logger.warn("Incoming request {}: {}", request.getRequestURI() , body);
     }
+
 }
